@@ -42,6 +42,11 @@ It took me a while to understand how scroll view works.
 The point of a scroll view is that it displays a virtual content rectangle larger than itself. The size of this virtual rectangle is defined by contentSize.
 When the content is fully displayed in the scrolled view, then it can't be scrolled down anymore.
 
+## Credits
+Movie Ticket icon - created by b farias from Noun Project
+
+Top Rated ico - created by Randomhero from Noun Project
+
 ## License
 
     Copyright [2017] [LiQiang Ye]
