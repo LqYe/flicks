@@ -21,6 +21,12 @@ extension MainViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCell
         
         let movie = filteredMovies[indexPath.row]
+        
+        let title = movie["title"] as? String
+        let overview = movie["overview"] as? String
+
+        cell.titleLabel.text = title
+        cell.overview = overview
 
         var url: URL!
         let baseUrl = "http://image.tmdb.org/t/p/w500"

@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MainViewController
         nowPlayingViewController.endpoint = "now_playing"
         nowPlayingViewController.tabBarItem.title = "Now Playing"
+        let tabBarItemTextAttributes: [String: AnyObject] = [NSFontAttributeName:UIFont(name: "Helvetica", size: 14)!]
+        nowPlayingViewController.tabBarItem.setTitleTextAttributes(tabBarItemTextAttributes, for: .normal)
         nowPlayingViewController.tabBarItem.image = UIImage(named: "now_playing")
         
         
@@ -37,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let topRatedViewController = topRatedNavigationController.topViewController as! MainViewController
         topRatedViewController.endpoint = "top_rated"
         topRatedViewController.tabBarItem.title = "Top Rated"
+        topRatedViewController.tabBarItem.setTitleTextAttributes(tabBarItemTextAttributes, for: .normal)
         topRatedViewController.tabBarItem.image = UIImage(named: "top_rated")
         
         
@@ -46,8 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //customizing tab bar
-        tabBarController.tabBar.barStyle = .blackOpaque
+        tabBarController.tabBar.barStyle = .black
         tabBarController.tabBar.barTintColor = .black
+        tabBarController.tabBar.alpha = 0.85
         tabBarController.tabBar.tintColor = .white
         
         

@@ -45,10 +45,12 @@ class MovieDetailsViewController: UIViewController {
         
         titleLabel.text = movieTitle
         overviewLabel.text = movieOverview
-        
         overviewLabel.sizeToFit()
         
-           }
+        //customize navigation bar title
+        navigationItem.title = movieTitle
+                
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

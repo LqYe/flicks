@@ -49,6 +49,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let segmentedButton = UIBarButtonItem(customView: segmentedControl)
         navigationItem.rightBarButtonItem = segmentedButton
         
+        let homeNavigationButtonItem = UIBarButtonItem(title: "Home", style: UIBarButtonItemStyle.plain, target: self, action: #selector(returnToHome))
+        navigationItem.leftBarButtonItem = homeNavigationButtonItem
+        
+        
         
         //initialize network error label
         
@@ -110,6 +114,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func returnToHome(sender: UIBarButtonItem) {
+        
+        filteredMovies = movies
+        //reload tableView
+        tableView.reloadData()
+        collectionView.reloadData()
+    }
+    
     func refreshControlAction(_ refreshControl: UIRefreshControl){
        
         fetchData(successCallBack: {
@@ -143,12 +155,28 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let dvc = segue.destination as! MovieDetailsViewController
         
-        let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
-        let cell = tableView.cellForRow(at: indexPath) as! MovieCell
         
-        dvc.image = cell.posterView.image
-        dvc.movieTitle = cell.titleLabel.text
-        dvc.movieOverview = cell.overviewLabel.text
+        var indexPath: IndexPath!
+        
+        //check sender and prepare next view accordingly
+        if (sender is UITableViewCell) {
+            
+            indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            let movieCell = tableView.cellForRow(at: indexPath) as! MovieCell
+            
+            dvc.image = movieCell.posterView.image
+            dvc.movieTitle = movieCell.titleLabel.text
+            dvc.movieOverview = movieCell.overviewLabel.text
+        }else if (sender is UICollectionViewCell) {
+            
+            indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell)!
+            
+            let movieGridCell = collectionView.cellForItem(at: indexPath) as! MovieGridCell
+            
+            dvc.image = movieGridCell.gridImageView.image
+            dvc.movieTitle = movieGridCell.titleLabel.text
+            dvc.movieOverview = movieGridCell.overview
+        }
         
     }
     
@@ -229,16 +257,17 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 cell.posterView.setImageWith(highResRequest, placeholderImage: nil, success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
                     
                     if largeImageResponse != nil {
-                        print("Large image was cached, update it to high res image")
+                        print("High res image was not cached, downloaded and set it")
                         cell.posterView.image = largeImage
                     } else {
-                        print("High Resolution Image not found; set it back to cached low res image")
-                        cell.posterView.image = smallImage
-                    }
+                        print("High res image was cachd; set it to cached high res image")
+                        cell.posterView.image = largeImage
+                    } //can combin
                     
                 }, failure: { (imageRequest, imageResponse, image) -> Void in
                         //no failure handling needed
-                    print("Cached High Resolution Image Failure")
+                    print("Failure: Unable to get high resolution image, set it back to low res image")
+                    cell.posterView.image = smallImage
 
                 })
             }

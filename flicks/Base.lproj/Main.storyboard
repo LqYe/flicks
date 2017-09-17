@@ -24,31 +24,40 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="AqM-WY-QSo" userLabel="Movie Collection View">
-                                <rect key="frame" x="0.0" y="108" width="414" height="628"/>
+                                <rect key="frame" x="8" y="108" width="398" height="628"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r3p-gr-24Z">
-                                    <size key="itemSize" width="122" height="148"/>
+                                    <size key="itemSize" width="122" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="MovieGridCell" id="ZNi-yV-dyg" customClass="MovieGridCell" customModule="flicks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="122" height="148"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="122" height="148"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="122" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="1Am-A7-9q5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="148"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="168"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gpg-OG-t3Y">
+                                                    <rect key="frame" x="0.0" y="168" width="122" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="gridImageView" destination="1Am-A7-9q5" id="QqZ-1F-T42"/>
+                                            <outlet property="titleLabel" destination="gpg-OG-t3Y" id="dUn-ut-P9X"/>
+                                            <segue destination="UGe-xa-KMb" kind="push" id="IjI-gf-45C"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -63,7 +72,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="187"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oiz-5B-xBq" id="9Hg-go-Yto">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="186.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XWn-1w-f8D">
@@ -109,7 +118,7 @@
             </objects>
             <point key="canvasLocation" x="652" y="154"/>
         </scene>
-        <!--Details-->
+        <!--Movie Details View Controller-->
         <scene sceneID="eft-jF-6pU">
             <objects>
                 <viewController id="UGe-xa-KMb" customClass="MovieDetailsViewController" customModule="flicks" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,7 +162,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="Snu-7L-MaV"/>
+                    <navigationItem key="navigationItem" id="Snu-7L-MaV"/>
                     <connections>
                         <outlet property="movieInfoView" destination="ErW-Zb-eJG" id="2j2-xT-EDg"/>
                         <outlet property="overviewLabel" destination="yjP-n6-PWJ" id="pie-UE-7TP"/>
@@ -190,4 +199,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina5_5.fullscreen"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="IjI-gf-45C"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,4 +12,7 @@ class MovieGridCell: UICollectionViewCell {
     @IBOutlet weak var gridImageView: UIImageView!
     
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var overview: String!
 }
