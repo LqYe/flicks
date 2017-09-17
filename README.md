@@ -45,7 +45,7 @@ When the content is fully displayed in the scrolled view, then it can't be scrol
 ## Credits
 Movie Ticket icon - created by b farias from Noun Project
 
-Top Rated ico - created by Randomhero from Noun Project
+Top Rated icon - created by Randomhero from Noun Project
 
 ## License
 
