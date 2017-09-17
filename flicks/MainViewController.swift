@@ -116,6 +116,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func returnToHome(sender: UIBarButtonItem) {
         
+        self.searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
         filteredMovies = movies
         //reload tableView
         tableView.reloadData()
